@@ -36,7 +36,8 @@
                                     </div>
                                     <div class="form-group"> 
                                         <label class=" mb-1" for="inputProjectname">Description about a book</label>
-                                        <textarea type="text" class="form-control" placeholder="Enter the description about a book" name="about" autocomplete="off"></textarea>
+                                        <textarea type="text" class="form-control" placeholder="Enter the description about a book" name="about"
+                                        id="about" autocomplete="off"></textarea>
                                     </div>
                                     <div class="mb-3 text-danger">
                                         @error('about') Book description must be valid @enderror
@@ -63,4 +64,12 @@
         </main>
     </div>
 </div>
+<script src="{{URL::to('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>
+    tinyMCE.init({
+        selector: 'textarea',
+        plugins: 'link code',
+        menubar: false
+    });
+</script>
 @endsection

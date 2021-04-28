@@ -11,8 +11,8 @@
       <div class="table-responsive">
         <table class="table">
           <thead class=" text-primary">
-            <th> Name</th>
-            <th> Surname </th>
+            <th scope="col"> Name</th>
+            <th scope="col"> Surname </th>
             <th class="text-right"> Actions </th>
           </thead>
           <tbody>

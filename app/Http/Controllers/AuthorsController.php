@@ -15,8 +15,8 @@ class AuthorsController extends Controller
     }
 
     public function show($id){
-        $data = authors::where('id',$id)->first();
-        return view('authors.show', compact('data'));
+        $authors = authors::where('id',$id)->first();
+        return view('authors.show', compact('authors'));
     }
 
     public function create(){

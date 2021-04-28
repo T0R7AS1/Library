@@ -13,7 +13,7 @@ class BooksTable extends Migration
             $table->string('title', 255);
             $table->string('isbn', 20);
             $table->unsignedTinyInteger('pages');
-            $table->string('about');
+            $table->text('about');
             $table->string('author_id');
             $table->timestamps();
         });

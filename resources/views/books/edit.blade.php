@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group"> 
                                         <label class=" mb-1" for="inputProjectname">Description about a book</label>
-                                        <textarea type="text" class="form-control" name="about" autocomplete="off">{{$books->about}}
+                                        <textarea type="text" class="form-control" name="about" id="about" autocomplete="off">{{$books->about}}
                                         </textarea>
                                     </div>
                                     <div class="mb-3 text-danger">
@@ -63,4 +63,12 @@
         </main>
     </div>
 </div>
+<script src="{{URL::to('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>
+        tinyMCE.init({
+        selector: 'textarea',
+        plugins: 'link code',
+        menubar: false
+    });
+    </script>
 @endsection

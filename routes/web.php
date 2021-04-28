@@ -14,33 +14,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 Route::get('/dashboard', function(){
     return view('dashboard');
-});
+})->middleware('auth');
 // Books CRUD
-Route::get('books', 'App\Http\Controllers\BooksController@index')->name('books.index');
+Route::get('books', 'App\Http\Controllers\BooksController@index')->name('books.index')->middleware('auth');
 
-Route::get('show/books{id}', 'App\Http\Controllers\BooksController@show')->name('books.show');
+Route::get('show/books{id}', 'App\Http\Controllers\BooksController@show')->name('books.show')->middleware('auth');
 
-Route::get('books/create', 'App\Http\Controllers\BooksController@create')->name('create.books');
-Route::post('books/store', 'App\Http\Controllers\BooksController@store')->name('books.store');
+Route::get('books/create', 'App\Http\Controllers\BooksController@create')->name('create.books')->middleware('auth');
+Route::post('books/store', 'App\Http\Controllers\BooksController@store')->name('books.store')->middleware('auth');
 
-Route::get('edit/books{id}', 'App\Http\Controllers\BooksController@edit');
-Route::post('update/books{id}', 'App\Http\Controllers\BooksController@update');
+Route::get('edit/books{id}', 'App\Http\Controllers\BooksController@edit')->middleware('auth');
+Route::post('update/books{id}', 'App\Http\Controllers\BooksController@update')->middleware('auth');
 
-Route::get('delete/books{id}', 'App\Http\Controllers\BooksController@delete');
+Route::get('delete/books{id}', 'App\Http\Controllers\BooksController@delete')->middleware('auth');
 
 // Authors CRUD
-Route::get('authors', 'App\Http\Controllers\AuthorsController@index')->name('authors.index');
+Route::get('authors', 'App\Http\Controllers\AuthorsController@index')->name('authors.index')->middleware('auth');
 
-Route::get('show/authors{id}', 'App\Http\Controllers\AuthorsController@show')->name('authors.show');
+Route::get('show/authors{id}', 'App\Http\Controllers\AuthorsController@show')->name('authors.show')->middleware('auth');
 
-Route::get('authors/create', 'App\Http\Controllers\AuthorsController@create')->name('create.authors');
-Route::post('authors/store', 'App\Http\Controllers\AuthorsController@store')->name('authors.store');
+Route::get('authors/create', 'App\Http\Controllers\AuthorsController@create')->name('create.authors')->middleware('auth');
+Route::post('authors/store', 'App\Http\Controllers\AuthorsController@store')->name('authors.store')->middleware('auth');
 
-Route::get('edit/authors{id}', 'App\Http\Controllers\AuthorsController@edit');
-Route::post('update/authors{id}', 'App\Http\Controllers\AuthorsController@update');
+Route::get('edit/authors{id}', 'App\Http\Controllers\AuthorsController@edit')->middleware('auth');
+Route::post('update/authors{id}', 'App\Http\Controllers\AuthorsController@update')->middleware('auth');
 
-Route::get('delete/authors{id}', 'App\Http\Controllers\AuthorsController@delete');
+Route::get('delete/authors{id}', 'App\Http\Controllers\AuthorsController@delete')->middleware('auth');
+// Auth
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

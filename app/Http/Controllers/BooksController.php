@@ -17,8 +17,8 @@ class BooksController extends Controller
     }
 
     public function show($id){
-        $data = books::where('id',$id)->first();
-        return view('books.show', compact('data'));
+        $books = books::where('id',$id)->first();
+        return view('books.show', compact('books'));
     }
 
     public function create(){
@@ -30,9 +30,9 @@ class BooksController extends Controller
     
     public function store(Request $request){
         $this->validate(request(),[
-            'title' => 'required|between:0,255',
-            'isbn' => 'required|between:14,20',
-            'pages' => 'required|between:0,4',
+            'title' => 'required|max:255',
+            'isbn' => 'required|numeric|digits between:0, 20',
+            'pages' => 'required|numeric|digits between:0, 4',
             'about' => 'required',
             'author_id' => 'required',
             
@@ -57,9 +57,9 @@ class BooksController extends Controller
 
     public function update(Request $request, $id){
         $this->validate(request(),[
-            'title' => 'required|between:0,255',
-            'isbn' => 'required|between:14,20',
-            'pages' => 'required|between:0,4',
+            'title' => 'required|max:255|String',
+            'isbn' => 'required|numeric|digits between:0, 20',
+            'pages' => 'required|numeric|digits between:0, 4',
             'about' => 'required',
             'author_id' => 'required',
         ]);

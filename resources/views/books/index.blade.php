@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover table-fixed">
           <thead class=" text-primary">
             <th> @sortablelink('title')</th>
             <th> Isbn </th>
@@ -24,7 +24,7 @@
                 <td> {{ $value -> title}} </td>
                 <td> {{ $value -> isbn}} </td>
                 <td> {{ $value -> pages}} </td>
-                <td class="w-25"> {{ $value -> about}} </td>
+                <td> {!! substr(strip_tags($value -> about), 0, 25) !!}{{ strlen($value->about) > 40 ? "..." : ""}} </td>
                 <td> {{ $value -> author_id}} </td>
                 <td class="text-right">
                     <a href="{{ URL::to('show/books'.$value->id) }}" class="btn btn-info">Show</a>
