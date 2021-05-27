@@ -25,8 +25,8 @@ class AuthorsController extends Controller
     
     public function store(Request $request){
         $this->validate(request(),[
-            'name' => 'required|between:0,64',
-            'surname' => 'required|between:0,64'
+            'name' => 'required|alpha|between:0,64',
+            'surname' => 'required|alpha|between:0,64'
         ]);
         $data = [];
         $data['name'] = $request->name;
@@ -45,8 +45,8 @@ class AuthorsController extends Controller
 
     public function update(Request $request, $id){
         $this->validate(request(),[
-            'name' => 'required|between:0,64',
-            'surname' => 'required|between:0,64'
+            'name' => 'required|alpha|between:0,64',
+            'surname' => 'required|alpha|between:0,64'
         ]);
         $data = [];
         $data['name'] = $request->name;
